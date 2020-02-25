@@ -122,3 +122,26 @@ function sumOfNPrimes(n) {
 console.log(sumOfNPrimes(0))
 console.log(sumOfNPrimes(1))
 console.log(sumOfNPrimes(4))
+
+function titleize(array, callback){
+    let arr = []
+    array.map(name => {
+        let name_1 = name[0].toUpperCase() + name.substr(1);
+        arr.push(`Mx. ${name_1} Jingleheimer Schmidt`)
+    })
+
+
+    return callback(arr)
+}
+
+const callback_1 = function name_final(name_arr) {
+    let names = ""
+    name_arr.forEach((name, index) => {
+        index === (name_arr.length - 1) ? names += `${name}` : names += `${name} \n` 
+    });
+    return names
+};
+
+let names = ["mary", "brian", "leo"]
+
+console.log(titleize(names, callback_1))
