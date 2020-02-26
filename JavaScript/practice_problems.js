@@ -145,3 +145,73 @@ const callback_1 = function name_final(name_arr) {
 let names = ["mary", "brian", "leo"]
 
 console.log(titleize(names, callback_1))
+
+
+function Elephant(name, height, tricks_arr) {
+    this.name = name 
+    this.height = height
+    this.tricks_arr = tricks_arr
+};
+
+        Elephant.prototype.trumpet = function (){
+            console.log(`${this.name} the elephant goes 'phrRRRR!!'`)
+        };
+
+        Elephant.prototype.grow = function(){
+            this.height += 12
+        };
+
+        Elephant.prototype.addtrick = function (trick){
+            this.tricks_arr.push(trick)
+        };
+
+        Elephant.prototype.play = function() {
+            let last_index = this.tricks_arr.length - 1
+            let random = this.tricks_arr[Math.random(last_index)]
+
+            console.log(`${this.name} is ${random}`)
+        };
+
+
+let tricks = [`painting a picture`, `eating a pie`, `reading a book`]
+const ellie_1 = new Elephant(`ele`, 10, tricks);
+
+console.log(ellie_1)
+ellie_1.trumpet();
+ellie_1.grow();
+console.log(ellie_1)
+
+let heard = [`ellie`, `charlie`, `kate`, `micah`]
+
+ Elephant.prototype.paradeHelper = function (name) {
+     let name_format = name[0].toUpperCase() + name.substring(1)
+   console.log(`${name_format} is trotting by!`)
+ }
+
+heard.forEach (name => {
+ ellie_1.paradeHelper(`${name}`)})
+
+ function yo(name){
+     console.log(`Yo ${name}!`)
+ }
+
+ const test =  yo(`Syed`)
+test
+
+function dinerBreakfast(){
+    let order = "I'd like cheesy scrambled eggs please.";
+    console.log(order);
+
+   return function (item){
+       order = `${order.slice(0, order.length - 8)} and ${item} please.`
+        console.log(order)
+
+    };
+
+};
+
+let dinner = dinerBreakfast();
+dinner("pumkin pie")
+dinner("coffee")
+dinner("cereal")
+dinner(`soup`)
