@@ -1,0 +1,48 @@
+<style>
+body {
+    background-color: #4169e1;
+}
+    .pad {
+        padding: 10px;
+    }
+    form {
+        background-color: #008080;
+        height: 25%;
+        width: 25%;
+        
+    }
+
+  
+</style>
+
+
+<form action = "/cats/:id" method = "post">
+
+    Name:<br>  <input type="text" name = "cat[name"> 
+    <br>
+    
+     Gender: <br>   
+    F<input type="radio" name="cat[sex]" value="F"> 
+    M<input type="radio" name="cat[sex]" value="M"> 
+    <br>
+
+Color:<br> <select name = "cat[color]">
+        <option disabled selected value> -- Select a color -- </option>
+        <option value="black" >Black</option>
+        <option value="white" >White</option>
+        <option value="orange" >Orange</option>
+        <option value="brown" >Brown</option>
+    </select>
+    <article>
+    Date: <br>name: ""
+    <input type = "date" id = "search" name = "cat[birth_date]">
+    </article>
+
+    Description:<br>
+    <textarea rows = "3"  id = "description" name = "cat[description]">
+    </textarea>
+    <input type="submit" value="Submit Kitty Kat">
+
+    
+
+</form>

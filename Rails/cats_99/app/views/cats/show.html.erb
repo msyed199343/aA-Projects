@@ -1,0 +1,45 @@
+<style>
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+</style>
+
+
+
+<table width="100%">
+    <thead>
+        <th colspan="5"><%=@cat.name%></th>
+
+    </thead>
+
+     <thead>
+    <% if @cat.color == "brown" %>
+        <th colspan="5"><%= image_tag("cat_page/kat_image.jpg")%></th>
+    <%elsif @cat.color == "white"%>
+        <th colspan="5"><%= image_tag("cat_page/kat_white.png") %></th>
+    <%else%>
+        <th colspan="5"><%= image_tag("cat_page/kat_black.jpg")%></th>
+     <%end%>
+    </thead>
+
+    <tbody>
+    
+        <td height = "500%"><%=@cat.color%> </td>
+        <td height = "500%">  <%=@cat.age%> </td>
+        <td height = "500%">  <%=@cat.sex%> </td>
+        <td height = "500%">  <%=@cat.birth_date%> </td>
+        <td height = "500%">  <%=@cat.description%> </td>
+    
+    </tbody>
+   
+ </table>   
+
+
+  

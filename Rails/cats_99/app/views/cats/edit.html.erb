@@ -1,0 +1,30 @@
+<form action = "/cats/" method = "patch">
+
+    Name:<br>  <input type="text" name = "cat[name"> 
+    <br>
+    
+     Gender: <br>   
+    F<input type="radio" name="cat[sex]" value="F"> 
+    M<input type="radio" name="cat[sex]" value="M"> 
+    <br>
+
+Color:<br> <select name = "cat[color]">
+        <option disabled selected value> -- Select a color -- </option>
+        <option value="black" >Black</option>
+        <option value="white" >White</option>
+        <option value="orange" >Orange</option>
+        <option value="brown" ">Brown</option>
+    </select>
+    <article>
+    Date: <br>
+    <input type = "date" id = "birth_date" name = "cat[birth_date]">
+    </article>
+
+    Description:<br>
+    <textarea rows = "3"  id = "description" name = "cat[description]">
+    </textarea>
+    <input type="submit" value="Submit Kitty Kat">
+
+    
+
+</form>
