@@ -35,7 +35,3 @@ Array.prototype.myReduce = function(callback,initialValue){
 
 
 arr.myReduce(test_func, 20)
-
-
-
-
