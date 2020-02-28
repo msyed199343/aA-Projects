@@ -116,17 +116,23 @@ console.log(bsearch([1, 2, 3, 4, 5], 5)) // 4
 
 function combine (left, right){
    const arr = [];
-    
-    while (left.length > 0 && right.length > 0 ) {
+   
+
+    while (left.length && right.length ) {
         if (left[0] < right[0]){
-          arr.push(left.shift()) }  
-        else {
-            
-            arr.push(right.shift());
+          arr.push(left[0]) 
+       left = left.slice(1)
+        }   
+    
+        else  {
+            arr.push(right[0]);
+            right = right.slice(1)
         };
+        
     };
 
-    return arr
+
+    return arr.concat(left, right)
 
 };
 
@@ -143,5 +149,21 @@ function mergeSort(arr){
 //[3, 2, 1]
                     // [9, 1, 5]  [6, 4, 3, 2]
 console.log(mergeSort([9, 1, 5, 6, 4, 3, 2])) //[1, 2, 3, 4. 5. 6. 9]
-console.log(mergeSort([3, 2, 1]))
-console.log(combine([5, 1, 6], [3, 5, 7]))
+console.log(mergeSort([2, 1]))
+console.log(mergeSort([5, 1, 6, 3, 5, 7]))
+
+
+
+
+function subsets(arr) {
+    if (arr.length === 0){return [[]]} 
+    
+    const f = arr[0]
+    const other = subsets(arr.slice(1))
+    const together = other.map(sub => [f].concat(sub));
+   
+          return other.concat(together)
+       
+};
+
+console.log(subsets([1, 2, 3])) // [[1],[1,2], [1, 2, 3], [1,3], [2], [2, 3], [3]]
