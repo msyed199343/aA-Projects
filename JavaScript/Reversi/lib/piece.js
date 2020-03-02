@@ -20,6 +20,12 @@ Piece.prototype.oppColor = function () {
  * Changes the piece's color to the opposite color.
  */
 Piece.prototype.flip = function () {
+    if (this.color === "black"){
+        this.color = "white"
+    }
+    else {
+        this.color = "black"
+    };
 };
 
 /**
@@ -27,6 +33,12 @@ Piece.prototype.flip = function () {
  * based on its color.
  */
 Piece.prototype.toString = function () {
+    if (this.color === "white"){
+        return "W"
+    }
+    else{
+        return "B"
+    };
 };
 
 module.exports = Piece;
