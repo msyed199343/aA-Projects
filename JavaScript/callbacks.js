@@ -78,4 +78,60 @@ function addNumbers(sum, numsLeft, callback){
     };
 };
 
-addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+// addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+
+function askIfGreaterThan(el1, el2, callback){
+    reader.question(`Is ${el1} > ${el2}?`, (res) => {
+        if (res === "yes"){
+            callback(true);
+        }
+        else{
+            callback(false);
+        };
+    })
+}
+
+// askIfGreaterThan(1, 2, answer => console.log(`${answer}`))
+
+
+function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop){
+
+    if (i === (arr.length - 1)) {
+        outerBubbleSortLoop(madeAnySwaps);
+        return;
+    };
+
+    askIfGreaterThan(arr[i], arr[i + 1],  isGreaterThan => {
+            if (isGreaterThan) {
+                const tmp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tmp;
+
+                madeAnySwaps = true;
+            }
+        innerBubbleSortLoop(arr, i + 1, madeAnySwaps, outerBubbleSortLoop);
+            });
+   
+};
+
+function absurdBubbleSort(arr, sortCompletionCallback){
+    function outerBubbleSortLoop(madeAnySwaps) {
+    
+        if (madeAnySwaps) {
+            innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop);
+        } 
+        else {
+            sortCompletionCallback(arr);
+        };
+    }
+
+    outerBubbleSortLoop(true);
+};
+
+
+let arr_1 = [3, 2, 1, 1]
+
+absurdBubbleSort(arr_1, function (arr) {
+    console.log(` \nSorted array: ` + JSON.stringify(arr));
+    reader.close();
+});
