@@ -131,7 +131,89 @@ function absurdBubbleSort(arr, sortCompletionCallback){
 
 let arr_1 = [3, 2, 1, 1]
 
-absurdBubbleSort(arr_1, function (arr) {
-    console.log(` \nSorted array: ` + JSON.stringify(arr));
-    reader.close();
-});
+// absurdBubbleSort(arr_1, function (arr) {
+//     console.log(` \nSorted array: ` + JSON.stringify(arr));
+//     reader.close();
+// });
+
+
+Function.prototype.myBind = function (context) {
+     return () => this.apply(context);
+};
+
+
+
+class Lamp {
+    constructor() {
+        this.name = "a lamp";
+    }
+}
+
+const turnOn = function () {
+    console.log("Turning on " + this.name);
+};
+
+const lamp = new Lamp();
+
+turnOn(); // should not work the way we want it to
+
+const boundTurnOn = turnOn.bind(lamp);
+const myBoundTurnOn = turnOn.myBind(lamp);
+
+// boundTurnOn(); // should say "Turning on a lamp"
+// myBoundTurnOn(); // should say "Turning on a lamp"
+
+
+    
+Function.prototype.myThrottle = function(interval) {
+    let tooSoon = false
+    
+    return (...args) => {
+        if (!tooSoon) {
+            tooSoon = true 
+            setTimeout(() => tooSoon = false, interval);
+             this(...args);
+        };
+
+    }
+};
+
+function random() {
+    return (...args) => {this(...args)}
+}
+
+
+console.log(random("hi"))
+
+
+// class Neuron {
+//     fire() {
+//         console.log("Firing!");
+//     };
+// };
+
+
+class Neuron {
+    constructor() {
+        this.fire = this.firee.myThrottle(5000);
+    }
+
+    firee() {
+        console.log("Firing!");
+    };
+
+};
+
+const neuronOne = new Neuron();
+neuronOne.fire();
+// const interval = setInterval(() => {
+//     neuron.fire();
+// }, 10);
+
+
+ 
+
+// const interval_2 = setInterval(() => {
+//     neuron.fire
+// }, 10);
+
