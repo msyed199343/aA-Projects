@@ -14,12 +14,12 @@ class Game {
         // place disk (if disk smaller than 
         //one being placed on or spot empty)
        
-        
-        this.promptMove() 
-        
-       
-        
+        if (this.moves() === false){
+            this.run();
+        };
     }
+
+    
     constructor() {
         this.towers = [[3, 2, 1], [], []]  //// 3 towers so max index of (2) use of push and pop (stack) first in first out 
     }
@@ -29,6 +29,18 @@ class Game {
 
     }
 
+    moves(answer, print){
+        if (this.isWon() === false){
+            console.log(`Next!`)
+            this.promptMove()
+        }
+        else{
+            console.log(`Finished!`)
+            return true
+        };
+
+        
+    }
     promptMove() {
         const towers = this.towers
         this.printIt();
@@ -36,8 +48,19 @@ class Game {
             if (move1 <= 2 && towers[move1].length > 0 ) {
                 reader.question(`Where to?`, (move2) => {
                     if (move2 != move1 && move2 <= 2)
-                        {towers[move2].push(towers[move1].pop())
-                        this.printIt();
+                    {   
+                            let idxOne = (towers[move1].length - 1)
+                            let idxTwo = (towers[move2].length - 1)
+                        
+                        if (towers[move1][idxOne] < towers[move2][idxTwo] || towers[move2][idxTwo] === undefined){
+                                this.moves( towers[move2].push(towers[move1].pop()),
+                                this.printIt())
+                        }
+                        else{
+                            console.log("Can't do that, try again!")
+                            this.promptMove();
+                        }
+                        
                     }
                     else{
                         console.log("Lets try that again.")
