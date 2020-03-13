@@ -1,9 +1,9 @@
 class Board{
     constructor(){
         this.board = [
-                        ["O", null, null],
-                        [null, "O", "O"],
-                        [null, null, null]
+                        ["O", "O", "O"],
+                        ["X", "X", "O"],
+                        ["X", "O", "X"]
                     ]
     }
 
@@ -26,7 +26,7 @@ class Board{
         // push coordinates            
         //
 
-        let arr = []
+        const arr = []
         for(let i = 0; i < possible.length; i++){
             for (let i_2 = 0; i_2 < 3; i_2++) {
                 let idx_1 = possible[i][i_2][0]
@@ -35,26 +35,38 @@ class Board{
                 
                 //check if boardPlace === arr.last if yes then push boardPlace to arr
                 // if arr.length === 3 return true else continue through whole thing and return false at end of method
-
+                
                 if (boardPlace === arr[arr.length-1] && i_2 != 0){  // 
                     arr.push(boardPlace)
                 }
-                    if (arr.length === 3){return true}
-                    else if (i_2 === 0) { arr.push(boardPlace)};
+                    if (arr.length === 3) { 
+                        this.winner(arr[0])
+                        return true
+                    }
+                    else if (i_2 === 0) { 
+                        arr.push(boardPlace)
+                    };                          // ran into issue with arr[0] it didnt exists becuase it never hit the above
+                                                // if statment , so fixed it with this if/else statement 
             }
         }
-
+        
         return false;
-
     };
 
 
-    winner(){
+    winner(mark){
         //returns winner "X" or "O"
+        console.log(`${mark} is the winner!`)
+        
     }
 
     empty(pos){
         //check at pos given if available space ?  
+        let idx_1 = pos[0]
+        let idx_2 = pos[1]
+
+        if (this.board[idx_1][idx_2] != null) {return false}
+        else {return true};
     }
 
     placeMark(pos, mark){
