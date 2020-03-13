@@ -15,3 +15,5 @@ class Game{
 
 let test = new Board
 
+console.log(test.won());
+

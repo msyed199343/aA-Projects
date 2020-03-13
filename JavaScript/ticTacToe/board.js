@@ -1,8 +1,8 @@
 class Board{
     constructor(){
         this.board = [
-                        [null, null, null],
-                        [null, null, null],
+                        ["O", null, null],
+                        [null, "O", "O"],
                         [null, null, null]
                     ]
     }
@@ -31,15 +31,20 @@ class Board{
             for (let i_2 = 0; i_2 < 3; i_2++) {
                 let idx_1 = possible[i][i_2][0]
                 let idx_2 = possible[i][i_2][1]
-                let boardPlace = this.board[idx_1, idx_2]
+                let boardPlace = this.board[idx_1][idx_2]
                 
-                //check if boardPlace === x if yes then check arr last is also x 
-                ///if arr last is also x continue to third iteration and if this also checks out as x
-                // then 
+                //check if boardPlace === arr.last if yes then push boardPlace to arr
+                // if arr.length === 3 return true else continue through whole thing and return false at end of method
 
-                
+                if (boardPlace === arr[arr.length-1] && i_2 != 0){  // 
+                    arr.push(boardPlace)
+                }
+                    if (arr.length === 3){return true}
+                    else if (i_2 === 0) { arr.push(boardPlace)};
             }
         }
+
+        return false;
 
     };
 
