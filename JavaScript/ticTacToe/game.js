@@ -6,14 +6,25 @@ const reader = readline.createInterface({
     output: process.stdout
 })
 
-class Game{
-    constructor(reader, completionCb){
-        
+class Game {
+    constructor() {
+        this.board = new Board();
+        this.currentPlayer = Board
     }
 
+
+    playMove(pos) {
+        this.board.placeMark(pos, this.currentPlayer);
+        this.swapTurn();
+    }
+
+   
 }
 
+module.exports = Game;
 let test = new Board
 
-console.log(test.won());
+console.log(test.placeMark([0, 0], "X"));
+console.log(test.board)
+
 

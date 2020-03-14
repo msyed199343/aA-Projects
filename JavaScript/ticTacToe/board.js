@@ -1,9 +1,9 @@
 class Board{
     constructor(){
         this.board = [
-                        ["O", "O", "O"],
-                        ["X", "X", "O"],
-                        ["X", "O", "X"]
+                        [null, null, null],
+                        [null, null, null],
+                        [null, null, null]
                     ]
     }
 
@@ -71,6 +71,12 @@ class Board{
 
     placeMark(pos, mark){
         //place mark("X" or "O") if empty(pos) === true
+        let idx_1 = pos[0]
+        let idx_2 = pos[1]
+
+        if(this.empty(pos)){
+            this.board[idx_1][idx_2] = mark
+        };
     }
 };
 

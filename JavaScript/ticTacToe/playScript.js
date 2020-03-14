@@ -15,6 +15,6 @@ function completion() {
             g.run(reader, completion);
         } else {
             reader.close();
-        }
+        };
     });
 };
