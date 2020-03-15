@@ -5,6 +5,7 @@ class Board{
                         [null, null, null],
                         [null, null, null]
                     ]
+        this.marks = ["X", "O"]
     }
 
     won(){

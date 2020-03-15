@@ -9,7 +9,7 @@ const reader = readline.createInterface({
 class Game {
     constructor() {
         this.board = new Board();
-        this.currentPlayer = Board
+        this.currentPlayer = this.board.marks[0];
     }
 
 
@@ -18,13 +18,32 @@ class Game {
         this.swapTurn();
     }
 
+    swapTurn(){
+
+       let arr = this.board.marks
+       let first = arr[0]
+       arr[0] = arr[1]
+       arr[1] = first
+    };
+
+    run(reader, gameCompletionCallback){
+        
+    }
+
    
 }
 
 module.exports = Game;
-let test = new Board
+// let test = new Board
 
-console.log(test.placeMark([0, 0], "X"));
-console.log(test.board)
+// console.log(test.placeMark([0, 0], "X"));
+// console.log(test.board)
+let testTwo = new Game
 
 
+// testTwo.swapTurn();
+
+// console.log(testTwo.board.marks);
+// testTwo.swapTurn();
+
+// console.log(testTwo.board.marks);
