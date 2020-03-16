@@ -32,28 +32,46 @@ class Game {
     }
 
     run(){
-            this.print();
-        reader.question(`${this.currentPlayer}, row?`, (idx_1) =>{
 
-            reader.question(`${this.currentPlayer}, column?`, (idx_2) => {
+        
+       do { this.print();
+            reader.question(`${this.currentPlayer}, row?`, (idx_1) =>{
+                
+                reader.question(`${this.currentPlayer}, column?`, (idx_2) => {
 
-                let pos = [parseInt(idx_1), parseInt(idx_2)]
+                    let pos = [parseInt(idx_1), parseInt(idx_2)]
 
-                if (this.board.empty(pos)) {
-                    this.playMove(pos)
-                    this.run();
-                }
-                else {
-                    console.log(`Can't do that, try again!`)
-                    this.run();
+                    if(this.check(pos)){
+                        if (this.board.empty(pos)) {
+                            this.playMove(pos)
+                            this.run();
+                        }
+                        else {
+                            console.log(`Can't do that, try again!`)
+                            this.run();
+                        }
+                    } 
+                    else{
+                        console.log(`Choose a number from 0 to 2!`)
+                        this.run();
+                    }
                     
-                };
+                })
                 
             })
-                
-        })
-
+        } while (this.board.won())
+        
+        
             
+    }
+
+    check(pos){
+        if (pos[0] < 3 && pos[1] < 3){
+            return true
+        }
+        else{
+            return false
+        };
     }
 
    

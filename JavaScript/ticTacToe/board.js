@@ -1,12 +1,14 @@
 class Board{
     constructor(){
         this.board = [
-                        [null, null, null],
-                        [null, null, null],
-                        [null, null, null]
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
                     ]
-        this.marks = ["X", "O"]
+        this.marks = [" X ", " O "]
     }
+
+    
 
     won(){
         //if three in a row of either "X" or "O" return true
@@ -27,32 +29,56 @@ class Board{
         // push coordinates            
         //
 
-        const arr = []
+        let arr = []
+        let matches = []
         for(let i = 0; i < possible.length; i++){
             for (let i_2 = 0; i_2 < 3; i_2++) {
                 let idx_1 = possible[i][i_2][0]
                 let idx_2 = possible[i][i_2][1]
                 let boardPlace = this.board[idx_1][idx_2]
                 
-                //check if boardPlace === arr.last if yes then push boardPlace to arr
-                // if arr.length === 3 return true else continue through whole thing and return false at end of method
-                
-                if (boardPlace === arr[arr.length-1] && i_2 != 0){  // 
-                    arr.push(boardPlace)
-                }
-                    if (arr.length === 3) { 
-                        this.winner(arr[0])
-                        return true
-                    }
-                    else if (i_2 === 0) { 
+                    if(boardPlace !== null && boardPlace === arr[arr.length-1] && i_2 != 0){
                         arr.push(boardPlace)
-                    };                          // ran into issue with arr[0] it didnt exists becuase it never hit the above
-                                                // if statment , so fixed it with this if/else statement 
+                    }
+                    else if (i_2 === 0 && boardPlace !== null){
+                        arr.push(boardPlace)
+                    };
+
+                this.pushArr(arr, matches)
             }
+
+            arr = []
         }
-        
-        return false;
+
+        this.checkTie(matches)
     };
+
+
+  
+    
+
+    pushArr(arr, arr_2){
+        //push arr in arr_2 if arr has all same value arr will only be 3 in length
+
+        if (arr[0] === arr[1] && arr[1] === arr[2] && arr.length === 3) {
+            arr_2.push(arr)
+        }
+
+    }
+
+
+    checkTie(arr){
+        if (arr.length === 2){
+            console.log(`Looks like a tie`)
+            return true
+        }
+        else if (arr.length === 1 ){
+            this.winner(arr[0][0]);
+            return true
+        }
+        else {return false};
+    }
+
 
 
     winner(mark){
@@ -82,3 +108,7 @@ class Board{
 };
 
 module.exports = Board;
+
+test = new Board
+
+
